@@ -86,7 +86,7 @@
 &kp LCTRL         &kp LEFT_ALT  &kp LEFT_COMMAND  &lt_to_layer_0 6 RIGHT_GUI  &lt 2 SPACE  &lt_to_layer_0 3 LS(LEFT_SHIFT)      &lt_to_layer_0 1 RETURN  &kp ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp PAGE_UP PAGE_DOWN>;
+            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
         };
 
         FUNCTION {
