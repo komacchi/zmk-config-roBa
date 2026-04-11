@@ -39,8 +39,8 @@
             key-positions = <12 13>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
+        browser-right {
+            bindings = <&kp LS(LG(RIGHT_BRACKET))>;
             key-positions = <11 10>;
         };
 
@@ -82,8 +82,8 @@
             bindings = <
 &kp Q             &kp W         &kp E             &kp R                       &kp T                                                                      &kp Y          &kp U  &lt 5 I    &kp O    &kp P
 &kp A             &kp S         &kp D             &kp F                       &kp G        &kp LS(LG(S))                        &kp APOS                 &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V                       &kp B        &kp MINUS                            &kp SEMICOLON            &kp N          &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_ALT  &kp LEFT_COMMAND  &lt_to_layer_0 6 RIGHT_GUI  &lt 2 SPACE  &lt_to_layer_0 3 LS(LEFT_SHIFT)      &lt_to_layer_0 1 RETURN  &kp BACKSPACE                             &kp DEL
+&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V                       &kp B        &kp LEFT_SHIFT                       &kp SEMICOLON            &kp N          &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_ALT  &kp LEFT_COMMAND  &lt_to_layer_0 2 RIGHT_GUI  &lt 3 SPACE  &lt_to_layer_0 3 LS(LEFT_SHIFT)      &lt_to_layer_0 1 RETURN  &kp BACKSPACE                             &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
