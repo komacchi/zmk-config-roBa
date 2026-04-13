@@ -41,7 +41,7 @@
 
         browser-right {
             bindings = <&kp LS(LG(RIGHT_BRACKET))>;
-            key-positions = <11 10>;
+            key-positions = <21 20>;
         };
 
         double_quotation {
@@ -57,6 +57,16 @@
         backspacekey {
             bindings = <&kp BACKSPACE>;
             key-positions = <9 8>;
+        };
+
+        escapekey {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+
+        browser-left {
+            bindings = <&kp LS(LG(LEFT_BRACKET))>;
+            key-positions = <20 19>;
         };
     };
 
