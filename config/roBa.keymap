@@ -36,7 +36,7 @@
 
         shift_tab {
             bindings = <&kp LS(TAB)>;
-            key-positions = <12 13>;
+            key-positions = <12 11>;
         };
 
         browser-right {
@@ -67,6 +67,11 @@
         browser-left {
             bindings = <&kp LS(LG(LEFT_BRACKET))>;
             key-positions = <20 19>;
+        };
+
+        shifttab {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <0 37>;
         };
     };
 
@@ -124,10 +129,10 @@
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                                               &trans  &trans  &trans  &trans  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END             &trans                   &trans  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)      &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans                  &trans          &trans                   &trans              &trans                   &trans  &trans                          &trans
+&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                                               &trans  &kp UP_ARROW    &kp UP_ARROW    &trans     &trans
+&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END             &trans                   &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans
+&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)      &trans  &trans  &trans          &trans          &trans     &trans
+&trans          &trans                  &trans          &trans                   &trans              &trans                   &trans  &trans                                             &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(C_AC_ZOOM_OUT) LC(C_AC_ZOOM_IN)>;
