@@ -95,13 +95,13 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E             &kp R                      &kp T                                                                      &kp Y          &kp U  &lt 5 I    &kp O    &kp P
-&kp A             &kp S         &kp D             &kp F                      &kp G        &kp LS(LG(S))                        &kp APOS                 &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V                      &kp B        &lt 6 MINUS                          &kp SEMICOLON            &kp N          &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_ALT  &kp LEFT_COMMAND  &lt_to_layer_0 2 LEFT_GUI  &lt 3 SPACE  &lt_to_layer_0 3 LS(LEFT_SHIFT)      &lt_to_layer_0 1 RETURN  &kp RIGHT_GUI                             &kp RIGHT_SHIFT
+&kp Q             &kp W         &kp E             &kp R                      &kp T                                                                      &kp Y                    &kp U  &lt 5 I    &kp O    &kp P
+&kp A             &kp S         &kp D             &kp F                      &kp G        &kp LS(LG(S))                        &kp APOS                 &kp H                    &kp J  &kp K      &kp L    &kp ENTER
+&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V                      &kp B        &lt 6 MINUS                          &kp SEMICOLON            &kp N                    &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_ALT  &kp LEFT_COMMAND  &lt_to_layer_0 2 LEFT_GUI  &lt 3 SPACE  &lt_to_layer_0 3 LS(LEFT_SHIFT)      &lt_to_layer_0 1 RETURN  &mt RIGHT_GUI BACKSPACE                             &kp RIGHT_SHIFT
             >;
 
-            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
+            sensor-bindings = <&inc_dec_kp C_AC_ZOOM_OUT C_AC_ZOOM_IN>;
         };
 
         FUNCTION {
@@ -130,7 +130,7 @@
 &trans          &trans                  &trans          &trans                   &trans              &trans                   &trans  &trans                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(PAGE_DOWN) LC(PAGE_UP)>;
+            sensor-bindings = <&inc_dec_kp LC(C_AC_ZOOM_OUT) LC(C_AC_ZOOM_IN)>;
         };
 
         MOUSE {
@@ -140,6 +140,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
         SCROLL {
@@ -149,6 +151,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp C_AC_ZOOM_OUT C_AC_ZOOM_IN>;
         };
 
         layer_6 {
