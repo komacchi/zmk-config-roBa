@@ -68,6 +68,16 @@
             bindings = <&kp LS(LG(LEFT_BRACKET))>;
             key-positions = <20 19>;
         };
+
+        leftClick {
+            bindings = <&mkp MB1>;
+            key-positions = <7 6>;
+        };
+
+        rightClick {
+            bindings = <&mkp MB2>;
+            key-positions = <7 8>;
+        };
     };
 
     macros {
@@ -135,10 +145,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &mkp MB1  &trans    &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &none   &trans  &none   &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &none   &none   &none   &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
