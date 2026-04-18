@@ -37,13 +37,13 @@ enum pmw3610_init_step {
     ASYNC_INIT_STEP_POWER_UP,  // reset cs line and assert power-up reset
     ASYNC_INIT_STEP_CLEAR_OB1, // clear observation1 register for self-test check
     ASYNC_INIT_STEP_CHECK_OB1, // check the value of observation1 register after self-test check
-    ASYNC_INIT_STEP_CONFIGURE, // set other registes like cpi and donwshift time (run, rest1, rest2)
+    ASYNC_INIT_STEP_CONFIGURE, // set other registers like cpi and downshift time (run, rest1, rest2)
                                // and clear motion registers
 
     ASYNC_INIT_STEP_COUNT // end flag
 };
 
-/* Timings (in ms) needed in between steps to allow each step finishes succussfully. */
+/* Timings (in ms) needed in between steps to allow each step to finish successfully. */
 // - Since MCU is not involved in the sensor init process, it is allowed to do other tasks.
 //   Thus, k_sleep or delayed schedule can be used.
 static const int32_t async_init_delay[ASYNC_INIT_STEP_COUNT] = {
@@ -485,7 +485,7 @@ static int pmw3610_async_init_configure(const struct device *dev) {
         err = set_cpi(dev, CONFIG_PMW3610_CPI);
     }
 
-    // set performace register: run mode, vel_rate, poshi_rate, poslo_rate
+    // set performance register: run mode, vel_rate, poshi_rate, poslo_rate
     if (!err) {
         err = reg_write(dev, PMW3610_REG_PERFORMANCE, PMW3610_PERFORMANCE_VALUE);
         LOG_INF("Set performance register (reg value 0x%x)", PMW3610_PERFORMANCE_VALUE);
