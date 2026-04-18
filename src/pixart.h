@@ -43,7 +43,7 @@ struct pixart_data {
     struct k_work_delayable init_work;
     int async_init_step;
 
-    //
+    // initialization state
     bool ready;           // whether init is finished successfully
     bool last_read_burst; // todo: needed?
     int err;              // error code during async init
