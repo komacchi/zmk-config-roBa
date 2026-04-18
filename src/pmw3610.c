@@ -558,7 +558,7 @@ static void pmw3610_async_init(struct k_work *work) {
 struct k_timer automouse_layer_timer;
 static bool automouse_triggered = false;
 static uint32_t automouse_total_movement;
-static uint32_t automouse_current_timeout_ms = CONFIG_PMW3610_AUTOMOUSE_KEEP_TIME_MS;
+static uint32_t automouse_current_timeout_ms = CONFIG_PMW3610_AUTOMOUSE_TIMEOUT_MS;
 
 static bool is_automouse_layer_active(void) { return zmk_keymap_layer_active(AUTOMOUSE_LAYER); }
 
@@ -590,7 +590,7 @@ static void activate_automouse_layer() {
 
 static void deactivate_automouse_layer(struct k_timer *timer) {
     automouse_triggered = false;
-    keep_automouse_timeout();
+    shorten_automouse_timeout();
     reset_automouse_state();
     zmk_keymap_layer_deactivate(AUTOMOUSE_LAYER);
 }
@@ -605,7 +605,7 @@ static void handle_automouse_layer_state_change(void) {
         reset_automouse_state();
     } else if (last_automouse_layer_state && !automouse_layer_active) {
         automouse_triggered = false;
-        keep_automouse_timeout();
+        shorten_automouse_timeout();
         reset_automouse_state();
         k_timer_stop(&automouse_layer_timer);
     }
