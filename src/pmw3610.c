@@ -664,13 +664,13 @@ static int pmw3610_report_data(const struct device *dev) {
         return -EBUSY;
     }
 
-    int32_t dividor;
+    int32_t divisor;
     enum pixart_input_mode input_mode = get_input_mode_for_current_layer(dev);
     bool input_mode_changed = data->curr_mode != input_mode;
     switch (input_mode) {
     case MOVE:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
-        dividor = CONFIG_PMW3610_CPI_DIVIDOR;
+        divisor = CONFIG_PMW3610_CPI_DIVIDOR;
         break;
     case SCROLL:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
@@ -678,11 +678,11 @@ static int pmw3610_report_data(const struct device *dev) {
             data->scroll_delta_x = 0;
             data->scroll_delta_y = 0;
         }
-        dividor = 1; // this should be handled with the ticks rather than dividors
+        divisor = 1; // this should be handled with the ticks rather than divisors
         break;
     case SNIPE:
         set_cpi_if_needed(dev, CONFIG_PMW3610_SNIPE_CPI);
-        dividor = CONFIG_PMW3610_SNIPE_CPI_DIVIDOR;
+        divisor = CONFIG_PMW3610_SNIPE_CPI_DIVIDOR;
         break;
     case BALL_ACTION:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
@@ -690,7 +690,7 @@ static int pmw3610_report_data(const struct device *dev) {
             data->ball_action_delta_x = 0;
             data->ball_action_delta_y = 0;
         }
-        dividor = 1;
+        divisor = 1;
         break;
     default:
         return -ENOTSUP;
@@ -707,9 +707,9 @@ static int pmw3610_report_data(const struct device *dev) {
     }
 
     int16_t raw_x =
-        TOINT16((buf[PMW3610_X_L_POS] + ((buf[PMW3610_XY_H_POS] & 0xF0) << 4)), 12) / dividor;
+        TOINT16((buf[PMW3610_X_L_POS] + ((buf[PMW3610_XY_H_POS] & 0xF0) << 4)), 12) / divisor;
     int16_t raw_y =
-        TOINT16((buf[PMW3610_Y_L_POS] + ((buf[PMW3610_XY_H_POS] & 0x0F) << 8)), 12) / dividor;
+        TOINT16((buf[PMW3610_Y_L_POS] + ((buf[PMW3610_XY_H_POS] & 0x0F) << 8)), 12) / divisor;
 
     if (IS_ENABLED(CONFIG_PMW3610_ORIENTATION_0)) {
         x = -raw_x;
