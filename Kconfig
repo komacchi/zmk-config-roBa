@@ -102,7 +102,7 @@ config PMW3610_REST2_SAMPLE_TIME_MS
     default 0
     range 0 2550
     help
-      Default REST2 mode sample period in millisecond.
+      Default REST3 mode sample period in millisecond.
       Minimum value is 10.
       No optimal value provided by datasheet.
 
