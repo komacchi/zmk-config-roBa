@@ -670,7 +670,7 @@ static int pmw3610_report_data(const struct device *dev) {
     switch (input_mode) {
     case MOVE:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
-        divisor = CONFIG_PMW3610_CPI_DIVIDOR;
+        divisor = CONFIG_PMW3610_CPI_DIVISOR;
         break;
     case SCROLL:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
@@ -682,7 +682,7 @@ static int pmw3610_report_data(const struct device *dev) {
         break;
     case SNIPE:
         set_cpi_if_needed(dev, CONFIG_PMW3610_SNIPE_CPI);
-        divisor = CONFIG_PMW3610_SNIPE_CPI_DIVIDOR;
+        divisor = CONFIG_PMW3610_SNIPE_CPI_DIVISOR;
         break;
     case BALL_ACTION:
         set_cpi_if_needed(dev, CONFIG_PMW3610_CPI);
