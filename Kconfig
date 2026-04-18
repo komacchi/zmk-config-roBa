@@ -18,8 +18,8 @@ config PMW3610_SMART_ALGORITHM
   default y
   help
     Enable the integration of the smart algorithm as the datasheet implementation.
-    The algorithm is used to extend the tracking acrocss a wider range of surfaces
-    such as graniles and tiles.
+    The algorithm is used to extend the tracking across a wider range of surfaces
+    such as granites and tiles.
 
 config PMW3610_CPI
     int "PMW3610's default CPI"
