@@ -15,7 +15,6 @@
 #include <zephyr/input/input.h>
 #include <zephyr/device.h>
 #include <zephyr/sys/dlist.h>
-#include <drivers/behavior.h>
 #include <zmk/keymap.h>
 #include <zmk/behavior.h>
 #include <zmk/keys.h>
@@ -232,7 +231,10 @@ static int motion_burst_read(const struct device *dev, uint8_t *buf, size_t burs
         .buf = buf,
         .len = burst_size,
     };
-    const struct spi_buf_set rx = {.buffers = &rx_buf, .count = 1};
+    const struct spi_buf_set rx = {
+        .buffers = &rx_buf,
+        .count = 1,
+    };
 
     err = spi_read_dt(&config->bus, &rx);
     if (err) {
@@ -969,7 +971,7 @@ ZMK_SUBSCRIPTION(pmw3610_listener, zmk_mouse_button_state_changed);
 #define BALL_ACTIONS_INST(n)                                                                       \
     static struct zmk_behavior_binding                                                             \
         ball_action_config_##n##_bindings[DT_PROP_LEN(n, bindings)] = TRANSFORMED_BINDINGS(n);     \
-                                                                                                   \
+                                                                                                    \
     static struct ball_action_cfg ball_action_cfg_##n = {                                          \
         .bindings_len = DT_PROP_LEN(n, bindings),                                                  \
         .bindings = ball_action_config_##n##_bindings,                                             \
@@ -1014,7 +1016,7 @@ DT_INST_FOREACH_CHILD(0, BALL_ACTIONS_INST)
         .ball_actions = ball_actions,                                                              \
         .ball_actions_len = BALL_ACTIONS_LEN,                                                      \
     };                                                                                             \
-                                                                                                   \
+                                                                                                    \
     DEVICE_DT_INST_DEFINE(n, pmw3610_init, NULL, &data##n, &config##n, POST_KERNEL,                \
                           CONFIG_SENSOR_INIT_PRIORITY, NULL);
 
