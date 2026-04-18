@@ -15,7 +15,6 @@
 #include <zephyr/input/input.h>
 #include <zephyr/device.h>
 #include <zephyr/sys/dlist.h>
-#include <zmk/keymap.h>
 #include <zmk/behavior.h>
 #include <zmk/keys.h>
 #include <zmk/behavior_queue.h>
@@ -27,6 +26,23 @@
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(pmw3610, CONFIG_INPUT_LOG_LEVEL);
+
+typedef uint8_t zmk_keymap_layer_id_t;
+typedef uint8_t zmk_keymap_layer_index_t;
+
+bool zmk_keymap_layer_active(zmk_keymap_layer_id_t layer);
+zmk_keymap_layer_index_t zmk_keymap_highest_layer_active(void);
+int zmk_keymap_layer_activate(zmk_keymap_layer_id_t layer);
+int zmk_keymap_layer_deactivate(zmk_keymap_layer_id_t layer);
+
+#define PMW3610_EXTRACT_BINDING(idx, drv_inst)                                                     \
+    {                                                                                              \
+        .behavior_dev = DEVICE_DT_NAME(DT_PHANDLE_BY_IDX(drv_inst, bindings, idx)),               \
+        .param1 = COND_CODE_0(DT_PHA_HAS_CELL_AT_IDX(drv_inst, bindings, idx, param1), (0),       \
+                              (DT_PHA_BY_IDX(drv_inst, bindings, idx, param1))),                  \
+        .param2 = COND_CODE_0(DT_PHA_HAS_CELL_AT_IDX(drv_inst, bindings, idx, param2), (0),       \
+                              (DT_PHA_BY_IDX(drv_inst, bindings, idx, param2))),                  \
+    }
 
 
 //////// Sensor initialization steps definition //////////
@@ -966,7 +982,7 @@ ZMK_SUBSCRIPTION(pmw3610_listener, zmk_mouse_button_state_changed);
 
 
 #define TRANSFORMED_BINDINGS(n)                                                                    \
-    { LISTIFY(DT_PROP_LEN(n, bindings), ZMK_KEYMAP_EXTRACT_BINDING, (, ), n) }
+    { LISTIFY(DT_PROP_LEN(n, bindings), PMW3610_EXTRACT_BINDING, (, ), n) }
 
 #define BALL_ACTIONS_INST(n)                                                                       \
     static struct zmk_behavior_binding                                                             \
