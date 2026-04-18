@@ -27,6 +27,7 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(pmw3610, CONFIG_INPUT_LOG_LEVEL);
 
+/* PMW3610 is built as an external module, so keep the small keymap surface it uses local. */
 typedef uint8_t zmk_keymap_layer_id_t;
 typedef uint8_t zmk_keymap_layer_index_t;
 
