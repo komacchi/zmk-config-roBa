@@ -435,8 +435,11 @@ static int pmw3610_async_init_power_up(const struct device *dev) {
     spi_cs_ctrl(dev, false);
     spi_cs_ctrl(dev, true);
 
-    /* not required in datasheet, but added anyway to have a clear state */
-    return reg_write(dev, PMW3610_REG_POWER_UP_RESET, PMW3610_POWERUP_CMD_RESET);
+    /*
+     * Issue the power-up reset directly.
+     * The sensor is not ready for the SPI clock on/off handshake until after the reset completes.
+     */
+    return _reg_write(dev, PMW3610_REG_POWER_UP_RESET, PMW3610_POWERUP_CMD_RESET);
 }
 
 static int pmw3610_async_init_clear_ob1(const struct device *dev) {
@@ -890,6 +893,11 @@ static int pmw3610_init(const struct device *dev) {
     struct pixart_data *data = dev->data;
     const struct pixart_config *config = dev->config;
     int err;
+
+    if (!spi_is_ready_dt(&config->bus)) {
+        LOG_ERR("%s is not ready", config->bus.bus->name);
+        return -ENODEV;
+    }
 
     // init device pointer
     data->dev = dev;
