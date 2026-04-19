@@ -15,7 +15,11 @@
 #include <zephyr/input/input.h>
 #include <zephyr/device.h>
 #include <zephyr/sys/dlist.h>
+#if __has_include(<zmk/behavior_binding.h>)
+#include <zmk/behavior_binding.h>
+#else
 #include <zmk/behavior.h>
+#endif
 #include <zmk/keys.h>
 #include <zmk/behavior_queue.h>
 #include <zmk/event_manager.h>
